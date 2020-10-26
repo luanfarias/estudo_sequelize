@@ -4,7 +4,9 @@
     "password": "admin",
     "database": "escola_ingles",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "createdAt": "dataCriacao",
+    "updatedAt": "dataAtualizacao"
   },
   "test": {
     "username": "root",

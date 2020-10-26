@@ -1,11 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const rotas = require('./routes');
 
 const app = express();
 
-app.use(bodyParser.json());
-
 const porta = 3000;
+
+rotas(app) // acesso as rotas
 
 app.listen(porta, () => { console.log(`Servidor rodando na porta ${porta}`) });
 
