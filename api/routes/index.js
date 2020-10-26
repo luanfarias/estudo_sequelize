@@ -1,5 +1,4 @@
 /** Arquivo utilizado para gerenciar todas as rotas */
-
 const bodyParser = require('body-parser');
 const pessoas = require('./pessoasRouter');
 

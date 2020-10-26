@@ -6,7 +6,7 @@ consign({cwd: 'api\\helpers\\'}).include('/errors').into(erros)
 
 
 class PessoaController {
-    async pegarTodasAsPessoas(requisicao, resposta) {
+    static async pegarTodasAsPessoas(requisicao, resposta) {
         try {
             const todasAspessoas = await database.Pessoas.findAll();
             return resposta.status(200).json(todasAspessoas)
@@ -15,8 +15,9 @@ class PessoaController {
         }
     }
 
-    async pegaUmaPessoa(requisicao, resposta) {
-        const { id } = requisicao.params;
+    static async pegaUmaPessoa(requisicao, resposta) {
+        const id = requisicao.params.id;
+        console.log(id);
         try {
             const umaPessoa = await database.Pessoas.findOne(
                 { where: { 
@@ -29,10 +30,22 @@ class PessoaController {
             }
             return resposta.status(200).json(umaPessoa);
         } catch (error) {
-            return resposta.status(erro.code).json(erro);
+            return resposta.status(error.code).json(error);
+        }
+    }
+
+    static async criaUmaPessoa(requisicao, resposta) {
+        const novaPessoa = requisicao.body;
+
+        try {
+            const pessoaCriada = await database.Pessoas.create(novaPessoa);
+            console.log(JSON.stringify(pessoaCriada));
+            return resposta.status(200).json(pessoaCriada);
+        } catch (error) {   
+            return resposta.status(500).json(pessoaCriada);
         }
     }
 }
 
-module.exports = new PessoaController();
+module.exports = PessoaController;
 
