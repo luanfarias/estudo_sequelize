@@ -6,7 +6,13 @@
     "host": "localhost",
     "dialect": "mysql",
     "createdAt": "dataCriacao",
-    "updatedAt": "dataAtualizacao"
+    "updatedAt": "dataAtualizacao",
+    "timezone": "-03:00",
+    "dialectOptions": {
+      "useUTC": false,
+      "dateStrings": true,
+        "typeCast": true
+    }
   },
   "test": {
     "username": "root",
